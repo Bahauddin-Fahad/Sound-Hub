@@ -12,6 +12,7 @@ import { useEffect } from "react";
 import ManageItems from "./components/ManageItems/ManageItems";
 import AddItems from "./components/AddItems/AddItems";
 import MyItems from "./components/MyItems/MyItems";
+import UpdateItem from "./components/UpdateItem/UpdateItem";
 
 function App() {
   const { pathname } = useLocation();
@@ -25,6 +26,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
         <Route path="/blogs" element={<Blogs />} />
+        <Route path="/inventory/:id" element={<UpdateItem />} />
         <Route path="/manageItems" element={<ManageItems />} />
         <Route path="/addItems" element={<AddItems />} />
         <Route path="/myItems" element={<MyItems />} />
