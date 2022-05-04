@@ -1,6 +1,6 @@
 import React from "react";
 
-const ManageInventory = ({ inventory }) => {
+const ManageInventory = ({ inventory, handleDelete }) => {
   const {
     _id,
     inventoryImg,
@@ -10,7 +10,7 @@ const ManageInventory = ({ inventory }) => {
     quantity,
     supplierName,
   } = inventory;
-  const handleDelete = () => {};
+
   return (
     <div className="border-2 rounded-md p-3 mx-auto shadow-[rgba(0,0,0,0.19)_0px_10px_20px,rgba(0,0,0,0.23)_0px_2px_6px] flex flex-col items-center justify-around hover:scale-105 opacity-90 hover:opacity-100 duration-500 max-w-sm">
       <img

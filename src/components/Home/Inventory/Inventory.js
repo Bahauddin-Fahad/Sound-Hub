@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Inventory = ({ inventory }) => {
   const {
@@ -11,7 +11,6 @@ const Inventory = ({ inventory }) => {
     quantity,
     supplierName,
   } = inventory;
-  const navigate = useNavigate();
   return (
     <div className="border-2 rounded-md p-3 mx-auto shadow-[rgba(0,0,0,0.19)_0px_10px_20px,rgba(0,0,0,0.23)_0px_2px_6px] flex flex-col items-center justify-around hover:scale-105 opacity-90 hover:opacity-100 duration-500 max-w-sm">
       <img
@@ -21,16 +20,16 @@ const Inventory = ({ inventory }) => {
       />
       <h2 className="text-2xl font-semibold mt-2">{inventoryName}</h2>
       <h3 className=" text-lg font-semibold">Price: {price}</h3>
-      <h6 className="w-11/12 mx-auto text-justify">{`${description}`}</h6>
+      <h6 className="w-11/12 mx-auto text-justify">{description}</h6>
       <h3 className=" text-lg font-semibold">Supplier: {supplierName}</h3>
       <h3 className=" text-lg font-semibold">Quantity: {quantity}</h3>
 
-      <button
-        onClick={() => navigate(`/inventory/${_id}`)}
-        className=" bg-gray-800 text-white font-medium py-1 px-3 mt-3 rounded-md"
-      >
-        Update : {inventoryName}
-      </button>
+      {/* <Link to={{ pathname: `/inventory/${_id}` }} state={inventory}> */}
+      <Link to={`/inventory/${_id}`}>
+        <button className=" bg-gray-800 text-white font-medium py-1 px-3 mt-3 rounded-md">
+          Update : {inventoryName}
+        </button>
+      </Link>
     </div>
   );
 };

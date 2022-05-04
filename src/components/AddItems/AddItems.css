@@ -1,0 +1,16 @@
+.form-input {
+  height: 30px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background: linear-gradient(145deg, #e1e0e0, #c8c8c8);
+  box-shadow: 3px 3px 7px #9a9999, -3px -3px 7px #ffffff;
+}
+.submit-button {
+  height: 30px;
+  margin-bottom: 5px;
+  border-radius: 29px;
+}
+.form-input::placeholder {
+  padding-left: 10px;
+  color: rgba(0, 0, 0, 0.528);
+}

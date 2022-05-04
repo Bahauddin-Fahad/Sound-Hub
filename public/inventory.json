@@ -1,7 +1,7 @@
 [
   {
     "_id": 1,
-    "inventoryImg": "earphones/onemore.jpg",
+    "inventoryImg": "https://i.ibb.co/3vWB98S/onemore.webp",
     "inventoryName": "1MORE Triple Drivery",
     "description": "The 1MORE Triple Driver in-ear headphones serve up stellar audio, great build quality and an attractive design for not that much money.",
     "price": "$54.99",
@@ -10,7 +10,7 @@
   },
   {
     "_id": 2,
-    "inventoryImg": "earphones/sony.jpg",
+    "inventoryImg": "https://i.ibb.co/TtNYqg8/sony.jpg",
     "inventoryName": "WF-1000XM4 Wireless Earbuds",
     "description": "With the WF-1000XM4, Sony has combined performance, ergonomics, and build quality more effectively than ever before. They're not perfect, but as an overall package they're hard to beat.",
     "price": "$248",
@@ -19,7 +19,7 @@
   },
   {
     "_id": 3,
-    "inventoryImg": "earphones/nuraloop.jpg",
+    "inventoryImg": "https://i.ibb.co/5LtFtzj/nuraloop.webp",
     "inventoryName": "NuraLoop Headphones",
     "description": "Promising many of the same features as its larger sibling, the NuraLoop offers up personalized audio in a more compact, rugged, portable, and affordable package while making barely any sacrifices in the process.",
     "price": "$149",
@@ -28,7 +28,7 @@
   },
   {
     "_id": 4,
-    "inventoryImg": "earphones/cambridge.jpg",
+    "inventoryImg": "https://i.ibb.co/tHJgnH5/cambridge.webp",
     "inventoryName": "Melomania 1 Plus",
     "description": "The Cambridge Audio Melomania 1 Plus are a clear upgrade on their predecessors, offering excellent audio performance, a helpful app, and easy-to-use controls.",
     "price": "$79.50",
@@ -37,7 +37,7 @@
   },
   {
     "_id": 5,
-    "inventoryImg": "earphones/lypertek.jpg",
+    "inventoryImg": "https://i.ibb.co/KV10zZw/lypertek.webp",
     "inventoryName": "Lypertek PurePlay Z3 2.0",
     "description": "Lypertek continues to punch above its weight and outside of its pricing bracket with the PurePlay Z3 2.0 true wireless earbuds, a stellar-sounding and well-priced package.",
     "price": "$175",
@@ -46,7 +46,7 @@
   },
   {
     "_id": 6,
-    "inventoryImg": "earphones/grado.jpg",
+    "inventoryImg": "https://i.ibb.co/8bqFnVc/grado.jpg",
     "inventoryName": "Grado GT220",
     "description": "Grado finally enters an already saturated market, and immediately leaps to the top of the class, thanks to an impressive sound, great controls, and a lightweight build.",
     "price": "$259",
@@ -55,7 +55,7 @@
   },
   {
     "_id": 7,
-    "inventoryImg": "earphones/sennheiser.jpg",
+    "inventoryImg": "https://i.ibb.co/r4HtLbc/sennheiser.webp",
     "inventoryName": "Sennheiser Momentum TWS 2",
     "description": "The sound quality, battery life, and design of the Sennheiser Momentum True Wireless 2 are nothing short of excellent.",
     "price": "$191",
@@ -64,7 +64,7 @@
   },
   {
     "_id": 8,
-    "inventoryImg": "earphones/airpod.jpg",
+    "inventoryImg": "https://i.ibb.co/j6s2W1w/airpod.jpg",
     "inventoryName": "Apple AirPods Pro",
     "description": "The new noise-cancelling feature is neat and useful, and the overall improvements to sound and design couldn't be more welcome-though, they are quite pricey.",
     "price": "$279",
@@ -73,7 +73,7 @@
   },
   {
     "_id": 9,
-    "inventoryImg": "earphones/bose.jpg",
+    "inventoryImg": "https://i.ibb.co/qjfw8pX/bose.jpg",
     "inventoryName": "Bose QuietComfort Earbuds",
     "description": "It's Bose's second attempt at a set of true wireless headphones, and the QuietComfort Earbuds are leaps and bounds better than the older SoundSport Free.",
     "price": "$279",
@@ -82,7 +82,7 @@
   },
   {
     "_id": 10,
-    "inventoryImg": "earphones/jabra.jpg",
+    "inventoryImg": "https://i.ibb.co/ZdHvG4d/jabra.webp",
     "inventoryName": "Jabra Elite 7 Active",
     "description": "The Elite 7 Active offers the same great value experience with its slightly lower price and extra in-ear security offset by its lack of bone conduction sensors that enhance the Pro's call quality.",
     "price": "$185",
