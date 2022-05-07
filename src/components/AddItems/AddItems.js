@@ -1,10 +1,21 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import "./AddItems.css";
+import { useNavigate, useParams } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../firebase.init";
+import "./AddItems.module.css";
+import UseNewInventory from "../../Hooks/UseNewInventory";
 const AddItems = () => {
+  const [user] = useAuthState(auth);
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
+  // const { inventoryId } = useParams();
+  // const [inventory] = UseNewInventory(inventoryId);
+  const navigate = useNavigate();
+  const onSubmit = (e, data) => {
+    const newItemDetails = {
+      email: user.email,
+    };
+
     const url = `http://localhost:5000/inventory`;
     fetch(url, {
       method: "POST",
@@ -15,6 +26,7 @@ const AddItems = () => {
     })
       .then((res) => res.json())
       .then((result) => console.log(result));
+    navigate("/manageInventory");
   };
   return (
     <div className="w-4/12 mx-auto">
@@ -25,6 +37,12 @@ const AddItems = () => {
           placeholder="Item Name"
           {...register("inventoryName", { required: true, maxLength: 20 })}
         />
+        <input
+          className="form-input"
+          placeholder="Price"
+          type="number"
+          {...register("price")}
+        />
         <textarea
           className="form-input"
           placeholder="Description"
@@ -32,9 +50,15 @@ const AddItems = () => {
         />
         <input
           className="form-input"
-          placeholder="Price"
+          placeholder="Supplier Name"
+          type="text"
+          {...register("supplierName")}
+        />
+        <input
+          className="form-input"
+          placeholder="Quantity"
           type="number"
-          {...register("price")}
+          {...register("quantity")}
         />
         <input
           className="form-input"

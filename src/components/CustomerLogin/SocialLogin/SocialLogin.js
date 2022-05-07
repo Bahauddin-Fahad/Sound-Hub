@@ -49,32 +49,29 @@ const SocialLogin = () => {
   return (
     <div>
       <div className="flex items-center justify-center">
-        <div className=" bg-slate-300 h-[2px] w-32"></div>
+        <div className=" bg-slate-300 h-[2px] w-36"></div>
         <p className="mx-2 mb-0">Or</p>
-        <div className=" bg-slate-300 h-[2px] w-32"></div>
+        <div className=" bg-slate-300 h-[2px] w-36"></div>
       </div>
       {errorElement}
-      <div>
+      <div className="flex items-center justify-center mt-4">
         <button
           onClick={() => signInWithGoogle()}
-          className="flex items-center justify-center mx-auto font-medium  mt-3 border-[1px] border-gray-400 rounded-xl px-6 py-1 w-4/5"
+          className="social-login-button flex items-center justify-center mx-auto h-11 w-11 border-[1px] border-gray-400 rounded-full bg-white text-black shadow-md"
         >
-          <img className="w-5 mr-3" src={googleLogo} alt="" />
-          Continue With Google
+          <img className="w-7 " src={googleLogo} alt="" />
         </button>
         <button
           onClick={() => signInWithFacebook()}
-          className="flex items-center justify-center mx-auto mt-3 bg-blue-700 rounded-xl text-white font-medium  border-0 px-6 py-1 w-4/5"
+          className="social-login-button flex items-center justify-center mx-auto h-11 w-11  border-[1px] border-gray-400 rounded-full bg-blue-700"
         >
-          <img className=" w-5 mr-3" src={fbLogo} alt="" />
-          Continue With Facebook
+          <img className=" w-7 " src={fbLogo} alt="" />
         </button>
         <button
           onClick={() => signInWithGithub()}
-          className="flex items-center justify-center mx-auto mt-3 border-0 bg-gray-800 text-white font-medium rounded-xl px-6 py-1 w-4/5"
+          className="social-login-button flex items-center justify-center mx-auto h-11 w-11  border-[1px] border-gray-400 rounded-full bg-gray-800"
         >
-          <img className="w-5 mr-3" src={gitHubLogo} alt="" />
-          Continue With GitHub
+          <img className="w-7 " src={gitHubLogo} alt="" />
         </button>
       </div>
     </div>

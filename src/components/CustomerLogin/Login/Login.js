@@ -5,7 +5,6 @@ import {
   useSignInWithEmailAndPassword,
 } from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-
 import Reload from "../../Shared/Reload/Reload";
 import SocialLogin from "../SocialLogin/SocialLogin";
 import { toast } from "react-toastify";
@@ -56,12 +55,12 @@ const Login = () => {
   };
 
   return (
-    <div className="mb-10">
-      <h2 className="text-center m-3 font-mono font-bold">Login Form</h2>
+    <div className="pt-10 pb-10 bg-stone-600">
       <Form
         onSubmit={handleLogIn}
-        className="mx-auto w-full sm:w-96 md:w-96 border-2 p-4 rounded-md"
+        className="mx-auto w-2/4 sm:w-1/3 border-2 p-4 shadow-inner rounded-md bg-white"
       >
+        <h2 className="text-center m-3 font-mono font-bold">Login Form</h2>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
@@ -82,19 +81,22 @@ const Login = () => {
           />
         </Form.Group>
         {errorElement}
-        <Button variant="dark" type="submit">
+        <Button variant="dark" type="submit" className="w-full mb-3">
           Log In
         </Button>
         <p>
           New to Sound Hub?
-          <Link className="ml-2 decoration-transparent" to="/register">
+          <Link
+            className="ml-2 decoration-transparent font-semibold"
+            to="/register"
+          >
             Please Register
           </Link>
         </p>
         <p>
           Forgot Password?
           <Link
-            className="ml-2 decoration-transparent"
+            className="ml-2 decoration-transparent font-semibold"
             to=""
             onClick={resetPassword}
           >

@@ -43,44 +43,50 @@ const Register = () => {
   }
 
   return (
-    <div className="mb-10">
-      <h2 className="text-center m-3 font-mono font-bold">Register Form</h2>
+    <div className="pt-10 pb-10 bg-stone-600 shadow-[box-shadow:rgba(222,222,222,0.3)_0px_19px_38px,rgba(222,222,222,0.22)_0px_15px_12px]">
       <Form
         onSubmit={handleRegister}
-        className="mx-auto w-full sm:w-96 md:w-96 border-2 p-4 rounded-md"
+        className="mx-auto w-2/4 sm:w-1/3 border-2 p-4 shadow-inner rounded-md bg-white"
       >
-        <Form.Group className="mb-3" controlId="formBasicName">
+        <h2 className="text-center m-3 font-mono font-bold">
+          Registration Form
+        </h2>
+        <Form.Group className="mb-2" controlId="formBasicName">
           <Form.Label>Your Name</Form.Label>
           <Form.Control
             ref={nameRef}
+            className="form-input"
             type="text"
             placeholder="Enter your Name"
             required
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Group className="mb-2" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control
             ref={emailRef}
+            className="form-input"
             type="email"
             placeholder="Enter email"
             required
           />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Group className="mb-2" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control
             ref={passRef}
+            className="form-input"
             type="password"
             placeholder="Your Password"
             required
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
+        <Form.Group className="mb-2" controlId="formBasicConfirmPassword">
           <Form.Label>Confirm Password</Form.Label>
           <Form.Control
             ref={confirmPassRef}
+            className="form-input"
             type="password"
             placeholder="Confirm Your Password"
             required
@@ -102,6 +108,7 @@ const Register = () => {
         </Form.Group>
         <Button
           id="create-account"
+          className="w-full rounded-full mb-3"
           variant="dark"
           type="submit"
           disabled={!agree}
@@ -110,7 +117,10 @@ const Register = () => {
         </Button>
         <p>
           Already have an Account?
-          <Link className="ml-2 decoration-transparent" to="/login">
+          <Link
+            className="ml-2 decoration-transparent font-semibold"
+            to="/login"
+          >
             Log In Here
           </Link>
         </p>

@@ -12,7 +12,7 @@ const ManageInventories = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log(data);
+        console.log(data);
         const rest = inventories.filter((p) => p._id !== id);
         setInventories(rest);
       });

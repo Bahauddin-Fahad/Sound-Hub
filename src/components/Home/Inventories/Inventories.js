@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import UseInventories from "../../../Hooks/UseInventories";
 import Inventory from "../Inventory/Inventory";
 const Inventories = () => {
-  const [inventories, setInventories] = UseInventories();
+  const [inventories] = UseInventories();
   const navigate = useNavigate();
   return (
     <div className="my-10 mx-11">
