@@ -1,21 +1,15 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
-import "./AddItems.module.css";
-import UseNewInventory from "../../Hooks/UseNewInventory";
+import "./AddItems.css";
 const AddItems = () => {
   const [user] = useAuthState(auth);
   const { register, handleSubmit } = useForm();
-  // const { inventoryId } = useParams();
-  // const [inventory] = UseNewInventory(inventoryId);
   const navigate = useNavigate();
-  const onSubmit = (e, data) => {
-    const newItemDetails = {
-      email: user.email,
-    };
-
+  const onSubmit = (data) => {
+    data.email = user.email;
     const url = `http://localhost:5000/inventory`;
     fetch(url, {
       method: "POST",

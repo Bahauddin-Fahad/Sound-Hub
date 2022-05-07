@@ -9,20 +9,55 @@ const UpdateItem = () => {
   const { inventoryId } = useParams();
   const [inventory] = UseNewInventory(inventoryId);
   const [show, setShow] = useState(false);
-
-  const handleQuantity = () => {
-    const newQuantity = inventory.quantity - 1;
-    inventory.quantity = newQuantity;
-  };
   const handleClose = () => setShow(false);
   const handleOpen = () => setShow(true);
-  const handleRestock = () => {};
 
-  const stockAvailable = inventory.quantity >= 0;
+  // Delivering the Items
+  const handleQuantity = () => {
+    const quantity = inventory.quantity - 1;
+    const newInventoryQuantity = { quantity };
+    fetch(`http://localhost:5000/inventory/${inventoryId}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newInventoryQuantity),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        alert("Delivered Succesfully");
+      });
+    window.location.reload();
+  };
+
+  // Restocking the Items
+  const handleRestock = () => {
+    handleClose();
+    const restockQuantity = restockQuantityRef.current.value;
+    const quantity = parseInt(inventory.quantity) + parseInt(restockQuantity);
+
+    const newInventoryQuantity = { quantity };
+    fetch(`http://localhost:5000/inventory/${inventoryId}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newInventoryQuantity),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        alert("Restocked Succesfully");
+      });
+    window.location.reload();
+  };
+
+  const stockAvailable = inventory.quantity > 0;
 
   return (
     <div>
-      <h2 className="text-center">Update {inventory.inventoryName}</h2>
+      <h2 className="text-center my-4">Update {inventory.inventoryName}</h2>
       <div className="flex flex-col sm:flex-col md:flex-row border-2 rounded-md shadow-md w-2/3 mx-auto">
         <div className="p-3 my-auto">
           <img className="rounded-md " src={inventory.inventoryImg} alt="" />
@@ -51,6 +86,7 @@ const UpdateItem = () => {
             <button
               onClick={() => handleQuantity()}
               className="w-1/3 bg-[red] rounded-md h-9 mx-auto text-white from-neutral-600 text-xl "
+              disabled={!stockAvailable}
             >
               Delivered
             </button>
@@ -62,7 +98,7 @@ const UpdateItem = () => {
             </button>
             <Modal show={show} onHide={handleClose}>
               <Modal.Header closeButton>
-                <Modal.Title>Quantity Restock</Modal.Title>
+                <Modal.Title>Restock Quantity</Modal.Title>
               </Modal.Header>
               <Modal.Body>
                 <input
@@ -82,9 +118,9 @@ const UpdateItem = () => {
                 </button>
                 <button
                   className="w-1/3 bg-[green] rounded-md h-9 mx-auto text-white from-neutral-600 text-xl"
-                  onClick={(handleClose, handleRestock)}
+                  onClick={handleRestock}
                 >
-                  Restock
+                  Confirm Restock
                 </button>
               </Modal.Footer>
             </Modal>
