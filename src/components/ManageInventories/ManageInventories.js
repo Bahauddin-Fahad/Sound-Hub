@@ -5,9 +5,17 @@ import ManageInventory from "../ManageInventory/ManageInventory";
 
 const ManageInventories = () => {
   const [inventories, setInventories] = UseInventories();
-  const handleDelete = (_id) => {
-    const rest = inventories.filter((p) => p._id !== _id);
-    setInventories(rest);
+  const handleDelete = (id) => {
+    const url = `http://localhost:5000/inventory/${id}`;
+    fetch(url, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
+        const rest = inventories.filter((p) => p._id !== id);
+        setInventories(rest);
+      });
   };
   return (
     <div className="my-10 mx-11">

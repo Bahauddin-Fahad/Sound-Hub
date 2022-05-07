@@ -8,7 +8,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import Reload from "../../Shared/Reload/Reload";
 import SocialLogin from "../SocialLogin/SocialLogin";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import auth from "../../../firebase.init";
 
@@ -102,7 +102,6 @@ const Login = () => {
           </Link>
         </p>
         <SocialLogin />
-        <ToastContainer />
       </Form>
     </div>
   );

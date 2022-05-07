@@ -12,9 +12,12 @@ const UpdateItem = () => {
   useEffect(() => {
     const url = `http://localhost:5000/inventory/${inventoryId}`;
     axios.get(url).then((data) => setInventory(data.data));
-  }, [inventoryId]);
+  }, [inventory]);
 
-  const handleQuantity = () => {};
+  const handleQuantity = () => {
+    const newQuantity = inventory.quantity - 1;
+    inventory.quantity = newQuantity;
+  };
   const handleClose = () => setShow(false);
   const handleOpen = () => {
     setShow(true);
@@ -58,7 +61,7 @@ const UpdateItem = () => {
             </button>
             <Modal show={show} onHide={handleClose}>
               <Modal.Header closeButton>
-                <Modal.Title>Modal heading</Modal.Title>
+                <Modal.Title>Quantity Restock</Modal.Title>
               </Modal.Header>
               <Modal.Body>
                 <input
@@ -66,6 +69,7 @@ const UpdateItem = () => {
                   className="w-full form-input"
                   type="number"
                   placeholder="Enter Quantity"
+                  required
                 />
               </Modal.Body>
               <Modal.Footer>

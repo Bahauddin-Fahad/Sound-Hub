@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Nav, Navbar } from "react-bootstrap";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../../firebase.init";
@@ -38,7 +38,7 @@ const Header = () => {
               </CustomLink>
               {user && (
                 <>
-                  <CustomLink as={Link} to="/manageItems">
+                  <CustomLink as={Link} to="/manageInventory">
                     Manage Items
                   </CustomLink>
 
@@ -64,7 +64,6 @@ const Header = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      <ToastContainer />
     </header>
   );
 };
