@@ -8,7 +8,7 @@ const ManageInventories = () => {
 
   // Deleting Items from Inventories
   const handleDelete = (id) => {
-    const url = `http://localhost:5000/inventory/${id}`;
+    const url = `https://sound-hub.herokuapp.com/inventory/${id}`;
     fetch(url, {
       method: "DELETE",
     })

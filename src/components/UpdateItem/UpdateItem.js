@@ -18,7 +18,7 @@ const UpdateItem = () => {
   const handleQuantity = () => {
     const quantity = inventory.quantity - 1;
     const newInventoryQuantity = { quantity };
-    const url = `http://localhost:5000/inventory/${inventoryId}`;
+    const url = `https://sound-hub.herokuapp.com/inventory/${inventoryId}`;
     axios.put(url, newInventoryQuantity).then((res) => {
       console.log(res);
       toast.success("Quantity Updated");
@@ -33,7 +33,7 @@ const UpdateItem = () => {
     const quantity = parseInt(inventory.quantity) + parseInt(restockQuantity);
 
     const newInventoryQuantity = { quantity };
-    const url = `http://localhost:5000/inventory/${inventoryId}`;
+    const url = `https://sound-hub.herokuapp.com/inventory/${inventoryId}`;
     axios.put(url, newInventoryQuantity).then((res) => {
       console.log(res);
       toast.success("Quantity Updated");

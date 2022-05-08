@@ -12,7 +12,7 @@ const AddItems = () => {
   const navigate = useNavigate();
   const onSubmit = (data) => {
     data.email = user?.email;
-    const url = `http://localhost:5000/inventory`;
+    const url = `https://sound-hub.herokuapp.com/inventory`;
     axios.post(url, data).then((res) => {
       console.log(res);
       toast.success("New Item Added");

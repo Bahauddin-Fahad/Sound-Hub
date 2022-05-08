@@ -9,7 +9,7 @@ const MyItems = () => {
   useEffect(() => {
     const getMyItems = async () => {
       const email = user.email;
-      const url = `http://localhost:5000/myItems?email=${email}`;
+      const url = `https://sound-hub.herokuapp.com/myItems?email=${email}`;
       await axios
         .get(url, {
           headers: {
@@ -24,7 +24,7 @@ const MyItems = () => {
 
   // Deleting Item from My Item
   const handleDelete = (id) => {
-    const url = `http://localhost:5000/inventory/${id}`;
+    const url = `https://sound-hub.herokuapp.com/inventory/${id}`;
     fetch(url, {
       method: "DELETE",
     })

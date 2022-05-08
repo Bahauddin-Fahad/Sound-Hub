@@ -5,7 +5,7 @@ const UseInventories = () => {
   const [inventories, setInventories] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/inventories")
+      .get("https://sound-hub.herokuapp.com/inventories")
       .then((data) => setInventories(data.data));
   }, []);
   return [inventories, setInventories];
