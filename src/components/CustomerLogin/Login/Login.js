@@ -10,6 +10,7 @@ import SocialLogin from "../SocialLogin/SocialLogin";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import auth from "../../../firebase.init";
+import axios from "axios";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -25,7 +26,6 @@ const Login = () => {
   const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
 
   if (user) {
-    navigate(from, { replace: true });
   }
 
   if (loading || sending) {
@@ -37,11 +37,15 @@ const Login = () => {
       <p className=" text-red-600 font-medium">Error: {error?.message}</p>
     );
   }
-  const handleLogIn = (e) => {
+  const handleLogIn = async (e) => {
+    e.preventDefault();
     const email = emailRef.current.value;
     const pass = passRef.current.value;
-    e.preventDefault();
-    signInWithEmailAndPassword(email, pass);
+    await signInWithEmailAndPassword(email, pass);
+    const { data } = await axios.post("http://localhost:5000/login", { email });
+    // console.log(data);
+    localStorage.setItem("accessToken", data.accessToken);
+    navigate(from, { replace: true });
   };
 
   const resetPassword = async () => {

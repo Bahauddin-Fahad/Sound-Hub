@@ -10,7 +10,13 @@ const MyItems = () => {
     const getMyItems = async () => {
       const email = user.email;
       const url = `http://localhost:5000/myItems?email=${email}`;
-      await axios.get(url).then((data) => setMyItems(data.data));
+      await axios
+        .get(url, {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          },
+        })
+        .then((data) => setMyItems(data.data));
       console.log(myItems);
     };
     getMyItems();

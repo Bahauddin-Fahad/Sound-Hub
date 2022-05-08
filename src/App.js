@@ -39,7 +39,7 @@ function App() {
           path="/manageInventory"
           element={
             <RequireAuth>
-              <ManageInventories />{" "}
+              <ManageInventories />
             </RequireAuth>
           }
         />
