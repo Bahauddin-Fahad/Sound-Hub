@@ -4,26 +4,23 @@ import { useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase.init";
 import "./AddItems.css";
+import axios from "axios";
+import { toast } from "react-toastify";
 const AddItems = () => {
   const [user] = useAuthState(auth);
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const onSubmit = (data) => {
-    data.email = user.email;
+    data.email = user?.email;
     const url = `http://localhost:5000/inventory`;
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((result) => console.log(result));
+    axios.post(url, data).then((res) => {
+      console.log(res);
+      toast.success("New Item Added");
+    });
     navigate("/manageInventory");
   };
   return (
-    <div className="w-4/12 mx-auto">
+    <div className="w-4/12 mx-auto min-h-[calc(100vh-160px)]">
       <h2 className="text-center">Add Items</h2>
       <form className="flex flex-col form" onSubmit={handleSubmit(onSubmit)}>
         <input
@@ -38,7 +35,7 @@ const AddItems = () => {
           {...register("price")}
         />
         <textarea
-          className="form-input"
+          className="form-input min-h-[80px]"
           placeholder="Description"
           {...register("description")}
         />

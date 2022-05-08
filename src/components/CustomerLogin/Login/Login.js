@@ -55,7 +55,7 @@ const Login = () => {
   };
 
   return (
-    <div className="pt-10 pb-10 bg-stone-600">
+    <div className="pt-10 pb-10 bg-stone-600 min-h-screen">
       <Form
         onSubmit={handleLogIn}
         className="mx-auto w-2/4 sm:w-1/3 border-2 p-4 shadow-inner rounded-md bg-white"
@@ -65,6 +65,7 @@ const Login = () => {
           <Form.Label>Email address</Form.Label>
           <Form.Control
             ref={emailRef}
+            className="form-input"
             type="email"
             placeholder="Enter email"
             required
@@ -75,6 +76,7 @@ const Login = () => {
           <Form.Label>Password</Form.Label>
           <Form.Control
             ref={passRef}
+            className="form-input"
             type="password"
             placeholder="Your Password"
             required

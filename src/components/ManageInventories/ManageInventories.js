@@ -5,6 +5,8 @@ import ManageInventory from "../ManageInventory/ManageInventory";
 
 const ManageInventories = () => {
   const [inventories, setInventories] = UseInventories();
+
+  // Deleting Items from Inventories
   const handleDelete = (id) => {
     const url = `http://localhost:5000/inventory/${id}`;
     fetch(url, {
@@ -18,9 +20,11 @@ const ManageInventories = () => {
       });
   };
   return (
-    <div className="my-10 mx-11">
-      <h1 className="text-4xl text-center font-bold mb-4">Our All Items</h1>
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-10">
+    <div className="my-10 min-h-screen">
+      <h1 className="text-4xl text-center font-bold mb-4">
+        All Items ({inventories.length})
+      </h1>
+      <div className=" px-3">
         {inventories.map((inventory) => (
           <ManageInventory
             key={inventory._id}
@@ -29,14 +33,14 @@ const ManageInventories = () => {
           />
         ))}
       </div>
-      <Link className="no-underline mx-auto" to="/addItems">
-        <button
-          className="bg-gray-800 text-white font-medium py-1 px-3 mt-6 rounded-md mx-auto w-80 block"
-          type="button"
+      <div className="flex justify-center">
+        <Link
+          className="no-underline inline-block bg-gray-800 text-white font-medium py-1 px-3 mt-6 rounded-md mx-auto w-2/5 text-center"
+          to="/addItems"
         >
           Add New Items
-        </button>
-      </Link>
+        </Link>
+      </div>
     </div>
   );
 };

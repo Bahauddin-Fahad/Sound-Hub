@@ -1,6 +1,8 @@
+import axios from "axios";
 import React, { useRef, useState } from "react";
-import { Modal } from "react-bootstrap";
+import { Form, Modal } from "react-bootstrap";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 import UseNewInventory from "../../Hooks/UseNewInventory";
 
 const UpdateItem = () => {
@@ -16,18 +18,11 @@ const UpdateItem = () => {
   const handleQuantity = () => {
     const quantity = inventory.quantity - 1;
     const newInventoryQuantity = { quantity };
-    fetch(`http://localhost:5000/inventory/${inventoryId}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(newInventoryQuantity),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        alert("Delivered Succesfully");
-      });
+    const url = `http://localhost:5000/inventory/${inventoryId}`;
+    axios.put(url, newInventoryQuantity).then((res) => {
+      console.log(res);
+      toast.success("Quantity Updated");
+    });
     window.location.reload();
   };
 
@@ -38,18 +33,11 @@ const UpdateItem = () => {
     const quantity = parseInt(inventory.quantity) + parseInt(restockQuantity);
 
     const newInventoryQuantity = { quantity };
-    fetch(`http://localhost:5000/inventory/${inventoryId}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(newInventoryQuantity),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        alert("Restocked Succesfully");
-      });
+    const url = `http://localhost:5000/inventory/${inventoryId}`;
+    axios.put(url, newInventoryQuantity).then((res) => {
+      console.log(res);
+      toast.success("Quantity Updated");
+    });
     window.location.reload();
   };
 
@@ -85,14 +73,14 @@ const UpdateItem = () => {
           <div className="flex">
             <button
               onClick={() => handleQuantity()}
-              className="w-1/3 bg-[red] rounded-md h-9 mx-auto text-white from-neutral-600 text-xl "
+              className="w-2/5 bg-[red] rounded-md h-9 mx-auto text-white from-neutral-600 text-xl "
               disabled={!stockAvailable}
             >
               Delivered
             </button>
             <button
               onClick={() => handleOpen()}
-              className="w-1/3 bg-[green] rounded-md h-9 mx-auto text-white from-neutral-600 text-xl "
+              className="w-2/5 bg-[green] rounded-md h-9 mx-auto text-white from-neutral-600 text-xl "
             >
               Restock
             </button>
@@ -100,29 +88,31 @@ const UpdateItem = () => {
               <Modal.Header closeButton>
                 <Modal.Title>Restock Quantity</Modal.Title>
               </Modal.Header>
-              <Modal.Body>
-                <input
-                  ref={restockQuantityRef}
-                  className="w-full form-input"
-                  type="number"
-                  placeholder="Enter Quantity"
-                  required
-                />
-              </Modal.Body>
-              <Modal.Footer>
-                <button
-                  className="w-1/3 bg-[red] rounded-md h-9 mx-auto text-white from-neutral-600 text-xl"
-                  onClick={handleClose}
-                >
-                  Close
-                </button>
-                <button
-                  className="w-1/3 bg-[green] rounded-md h-9 mx-auto text-white from-neutral-600 text-xl"
-                  onClick={handleRestock}
-                >
-                  Confirm Restock
-                </button>
-              </Modal.Footer>
+              <form onSubmit={handleRestock}>
+                <Modal.Body>
+                  <input
+                    ref={restockQuantityRef}
+                    className="w-full form-input"
+                    type="number"
+                    placeholder="Enter Quantity"
+                    required="required"
+                  />
+                </Modal.Body>
+
+                <Modal.Footer>
+                  <button
+                    className="w-2/5 bg-[red] rounded-md h-9 mx-auto text-white from-neutral-600 text-xl"
+                    onClick={handleClose}
+                  >
+                    Close
+                  </button>
+                  <input
+                    type="submit"
+                    className="w-2/5 bg-[green] rounded-md h-9 mx-auto text-white from-neutral-600 text-xl"
+                    value="Confirm Restock"
+                  />
+                </Modal.Footer>
+              </form>
             </Modal>
           </div>
         </div>
